@@ -1,14 +1,18 @@
 const express = require("express")
-const { dashboardController, searchFlightsController, reservationController, logoutController, mybookingsController } = require("../controllers/loginControllers")
+const {  sessionController, dashboardFileGetter, filterFlightsFileGetter, reservationController, searchFlightsPostController, mybooinkgsFileGetter, mybookingsController, logoutController } = require("../controllers/loginControllers")
 const Router = express.Router()
 
-Router.route("/dashboard").get(dashboardController)
+Router.route("/dashboard").get(dashboardFileGetter)
 
-Router.route("/searchflights").post(searchFlightsController)
+Router.route("/searchflights").get(filterFlightsFileGetter).post(searchFlightsPostController)
 
 Router.route("/searchflights/:id").post(reservationController)
 
-Router.route("/mybookings").get(mybookingsController)
+Router.route("/mybookings").get(mybooinkgsFileGetter)
+
+Router.route("/mybookings/getbookings").get(mybookingsController)
+
+Router.route("/session").get(sessionController)
 
 Router.route("/logout").get(logoutController)
 

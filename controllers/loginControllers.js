@@ -3,11 +3,24 @@ const bookingModel = require("../models/bookingModel")
 const path = require("path")
 const publicPath = path.join(__dirname + ".." + "public")
 
-const dashboardController = (req, res) => {
-    res.status(200).sendFile(path.join(publicPath + "userdashboard.html"))
+const dashboardFileGetter = (req, res) => {
+    res.status(200).sendFile(path.join(publicPath, "dashboard.html"))
 }
 
-const searchFlightsController = async (req, res) => {
+const filterFlightsFileGetter = (req, res) => {
+    res.status(200).sendFile(path.join(publicPath, "filter.html"))
+}
+
+const mybooinkgsFileGetter = (req, res) => {
+    res.status(200).sendFile(path.join(publicPath, "mybooking.html"))
+}
+
+const sessionController = async (req, res) => {
+    const { firstname } = req.session.firstname
+    res.status(200).json({ success: true, firstname: firstname })
+}
+
+const searchFlightsPostController = async (req, res) => {
     const { timing } = req.body
     const flightData = await flightModel.find({ timing: timing, reserved: { $lt: 60 } }).exec()
     if (flightData.length != 0) {
@@ -24,15 +37,15 @@ const mybookingsController = async (req, res) => {
     const bookingData = await bookingModel.find({ email: email }).exec()
     if (bookingData.length != 0) {
         console.log("Bookings fetched")
-        res.status(200).json({ success: true, message: `${firstname}'s Bookings fetched`, bookingData: bookingData })
+        res.status(200).json({ success: true, message: `${firstname}'s Bookings fetched`, bookingData: bookingData, firstname: firstname })
         return
     }
     console.log("No Bookings Available")
-    res.status(200).json({ success: false, message: "No Bookings Available" })
+    res.status(200).json({ success: false, message: "No Bookings Available", firstname: firstname })
 }
 
 const reservationController = async (req, res) => {
-    const id = req.params.id
+    const id = req.params.ids
     const flightData = await flightModel.findOne({ _id: id }).exec()
     const { firstname, lastname, phnumber, email } = req.session.userData
     console.log(req.session.userData)
@@ -58,4 +71,4 @@ const logoutController = (req, res) => {
     res.status(301).redirect("/home/login")
 }
 
-module.exports = { searchFlightsController, mybookingsController, dashboardController, reservationController, logoutController }
+module.exports = { logoutController, sessionController, dashboardFileGetter, filterFlightsFileGetter, mybooinkgsFileGetter, searchFlightsPostController, mybookingsController, reservationController }

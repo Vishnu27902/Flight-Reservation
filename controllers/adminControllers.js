@@ -3,12 +3,20 @@ const bookingModel = require("../models/bookingModel")
 const path = require("path")
 const publicPath = path.join(__dirname, "..", "public")
 
-const dashboardController = (req, res) => {
+const adminDashboardFileGetter = (req, res) => {
     res.status(200).sendFile(path.join(publicPath, "admindashboard.html"))
 }
 
-const addFlightGetController = (req, res) => {
+const addFlightFileGetter = (req, res) => {
     res.status(200).sendFile(path.join(publicPath, "addflight.html"))
+}
+
+const flightsFileGetter = (req, res) => {
+    res.status(200).sendFile(path.join(publicPath, "flights.html"))
+}
+
+const bookingsFileGetter = (req, res) => {
+    res.status(200).sendFile(path.join(publicPath, "bookings,html"))
 }
 
 const bookingsGetController = async (req, res) => {
@@ -76,4 +84,4 @@ const logoutController = (req, res) => {
     res.status(302).redirect("/home")
 }
 
-module.exports = { addFlightPostController, deleteflightController, bookingsPostContoller, bookingsGetController, getFlightsController, logoutController, addFlightGetController, dashboardController, addFlightPostController }
+module.exports = { addFlightPostController, adminDashboardFileGetter, flightsFileGetter, bookingsFileGetter, deleteflightController, bookingsPostContoller, bookingsGetController, getFlightsController, logoutController, addFlightFileGetter, addFlightPostController }

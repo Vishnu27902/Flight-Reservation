@@ -1,16 +1,16 @@
 const express = require("express")
-const { addFlightPostController, dashboardController, getFlightsController, addFlightGetController, deleteflightController, bookingsGetController, bookingsPostContoller, logoutController } = require("../controllers/adminControllers")
+const { adminDashboardFileGetter, addFlightFileGetter, flightsFileGetter, deleteflightController, addFlightPostController, bookingsFileGetter, bookingsPostContoller, logoutController } = require("../controllers/adminControllers")
 const Router = express.Router()
 
-Router.route("/dashboard").get(dashboardController)
+Router.route("/admindashboard").get(adminDashboardFileGetter)
 
-Router.route("/flights").get(getFlightsController)
+Router.route("/flights").get(flightsFileGetter)
 
-Router.route("/addflight").get(addFlightGetController).post(addFlightPostController)
+Router.route("/addflight").get(addFlightFileGetter).post(addFlightPostController)
 
 Router.route("/deleteflight/:id").delete(deleteflightController)
 
-Router.route("/bookings").get(bookingsGetController).post(bookingsPostContoller)
+Router.route("/bookings").get(bookingsFileGetter).post(bookingsPostContoller)
 
 Router.route("/logout").get(logoutController)
 
