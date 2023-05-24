@@ -51,7 +51,7 @@ const adminLogin = async () => {
     const email = document.getElementById("adminemail").value
     const password = document.getElementById("adminpassword").value
     const inputData = { email: email, password: password, role: "admin" }
-    await axios.post("https://flight-reservation-app.onrender.com/home/adminlogin", inputData).then((res) => {
+    await axios.post("https://flight-reservation-app.onrender.com/home/adminlogin", inputData).then(async(res) => {
         const { success } = res.data
         if (success) {
             window.location.href = "/home/adminlogin/admindashboard"
