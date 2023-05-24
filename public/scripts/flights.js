@@ -1,5 +1,5 @@
 const serverData = async () => {
-  const data = await axios.get("http://localhost:5000/home/adminlogin/session")
+  const data = await axios.get("https://flight-reservation-app.onrender.com/home/adminlogin/session")
   let res = data.data
   document.getElementById("user-info").innerHTML = res.firstname
 }
@@ -30,12 +30,12 @@ const appendFlights = (flightsData) => {
 }
 
 const deleteFlight = async (flightnumber) => {
-  const res = await axios.delete(`http://localhost:5000/home/adminlogin/flights/getflights/${flightnumber}`)
+  const res = await axios.delete(`https://flight-reservation-app.onrender.com/home/adminlogin/flights/getflights/${flightnumber}`)
   window.location.href = "/home/adminlogin/flights"
 }
 
 const flights = async () => {
-  const data = await axios.get("http://localhost:5000/home/adminlogin/flights/getflights")
+  const data = await axios.get("https://flight-reservation-app.onrender.com/home/adminlogin/flights/getflights")
   const res = data.data
   if (res.success) {
     appendFlights(res.flightData)

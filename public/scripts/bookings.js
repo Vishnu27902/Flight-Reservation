@@ -9,7 +9,7 @@ const minute = date.getMinutes()
 const planeNumberDOM = document.getElementById("flightnumber")
 
 const serverData = async () => {
-  const data = await axios.get("http://localhost:5000/home/adminlogin/session")
+  const data = await axios.get("https://flight-reservation-app.onrender.com/home/adminlogin/session")
   let res = data.data
   document.getElementById("user-info").innerHTML = res.firstname
 }
@@ -84,7 +84,7 @@ const search = async () => {
   console.log(validateFlightNumber(), validateDate(), validateTime())
   if (validateFlightNumber() && validateTime() && validateDate()) {
     const inputData = { flightnumber: planeNumberDOM.value, timing: dateDOM.value + " " + timeDOM.value }
-    const serverData = await axios.post("http://localhost:5000/home/adminlogin/bookings", inputData)
+    const serverData = await axios.post("https://flight-reservation-app.onrender.com/home/adminlogin/bookings", inputData)
     const res = serverData.data
     if (res.success) {
       appendBooking(res.bookingData)

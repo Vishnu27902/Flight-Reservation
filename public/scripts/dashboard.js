@@ -1,5 +1,5 @@
 const serverData = async () => {
-    const data = await axios.get("http://localhost:5000/home/adminlogin/session")
+    const data = await axios.get("https://flight-reservation-app.onrender.com/home/adminlogin/session")
     let res = data.data
     document.getElementById("firstname").innerHTML += res.firstname
     document.getElementById("lastname").innerHTML += res.lastname

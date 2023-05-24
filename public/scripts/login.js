@@ -33,11 +33,11 @@ const login = async () => {
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value
     const inputData = { email: email, password: password }
-    await axios.post("http://localhost:5000/home/login", inputData).then(async (res) => {
+    await axios.post("https://flight-reservation-app.onrender.com/home/login", inputData).then(async (res) => {
         const { success } = res.data
         if (success) {
             window.location.href = "/home/login/dashboard"
-            // const res = await axios.get("http://localhost:5000/home/login/dashboard")
+            // const res = await axios.get("https://flight-reservation-app.onrender.com/home/login/dashboard")
             // console.log(res)
             return
         }
@@ -51,12 +51,12 @@ const adminLogin = async () => {
     const email = document.getElementById("adminemail").value
     const password = document.getElementById("adminpassword").value
     const inputData = { email: email, password: password, role: "admin" }
-    await axios.post("http://localhost:5000/home/adminlogin", inputData).then((res) => {
+    await axios.post("https://flight-reservation-app.onrender.com/home/adminlogin", inputData).then((res) => {
         const { success } = res.data
         if (success) {
             window.location.href = "/home/adminlogin/admindashboard"
             return
-            // axios.get("http://localhost:5000/home/adminlogin/dashboard")
+            // axios.get("https://flight-reservation-app.onrender.com/home/adminlogin/dashboard")
             // return
         }
         showAdminStatus()

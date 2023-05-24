@@ -148,7 +148,7 @@ const register = async () => {
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
         const inputData = { firstname: firstname, lastname: lastname, phnumber: phnumber, email: email, password: password }
-        await axios.post("http://localhost:5000/home/registration", inputData).then((data) => {
+        await axios.post("https://flight-reservation-app.onrender.com/home/registration", inputData).then((data) => {
             const { success } = data.data
             if (success) {
                 showStatus(success)

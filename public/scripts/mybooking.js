@@ -1,5 +1,5 @@
 const sessionData = async () => {
-  const data = await axios.get("http://localhost:5000/home/login/session")
+  const data = await axios.get("https://flight-reservation-app.onrender.com/home/login/session")
   let res = data.data
   document.getElementById("user-info").innerHTML = res.firstname
   return res
@@ -7,7 +7,7 @@ const sessionData = async () => {
 const { firstname, lastname, email, phnumber } = sessionData()
 
 const serverData = async () => {
-  const data = await axios.get("http://localhost:5000/home/login/mybookings/getbookings")
+  const data = await axios.get("https://flight-reservation-app.onrender.com/home/login/mybookings/getbookings")
   const res = data.data
   if (res.success) {
     appendBooking(res.bookingData, firstname, lastname, email, phnumber)

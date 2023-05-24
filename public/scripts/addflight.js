@@ -7,7 +7,7 @@ const minute = dateObj.getMinutes()
 
 const getSessionData = async () => {
     console.log("Hello")
-    const res = await axios.get("http://localhost:5000/home/adminlogin/session")
+    const res = await axios.get("https://flight-reservation-app.onrender.com/home/adminlogin/session")
     document.getElementById("user-info").innerHTML = res.data.firstname
 }
 getSessionData()
@@ -149,7 +149,7 @@ const add = document.getElementById("submit")
 const addflight = async () => {
     if (validateFlightNumber() && validateFrom() && validateTo() && validateTime() && validateDate()) {
         const inputData = { flightnumber: flightnumber.value, from: from.value, to: to.value, timing: date.value + " " + time.value }
-        const res = await axios.post("http://localhost:5000/home/adminlogin/addflight", inputData)
+        const res = await axios.post("https://flight-reservation-app.onrender.com/home/adminlogin/addflight", inputData)
         const { success } = res.data
         showStatus(success)
     }
