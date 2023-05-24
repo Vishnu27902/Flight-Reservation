@@ -10,7 +10,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <title>Flight Search</title>
+    <title>Bookings</title>
     <head>
       <link rel="stylesheet" href="./css/dashboard.css" />
     </head>
@@ -19,26 +19,33 @@
     <div class="container">
       <nav class="sidebar">
         <div>
-          <div class="sidebar__logo">
-            <h2 class="sidebar__logo-header">Flight<br />Reservation</h2>
+          <div>
+            <div class="sidebar__logo">
+              <h2 class="sidebar__logo-header">Flight<br />Reservation</h2>
+            </div>
+            <ul class="side-nav">
+              <span class="side-nav__header">Main Menu</span>
+              <li class="side-nav__item">
+                <span
+                  ><a href="/home/adminlogin/admindashboard">Dashboard</a></span
+                >
+              </li>
+              <li class="side-nav__item">
+                <span><a href="/home/adminlogin/flights">Flights</a></span>
+              </li>
+              <li class="side-nav__item">
+                <span><a href="/home/adminlogin/addflight">Add Flight</a></span>
+              </li>
+              <li class="side-nav__item side-nav__item-active">
+                <span><a href="/home/adminlogin/bookings">Bookings</a></span>
+              </li>
+            </ul>
           </div>
-          <ul class="side-nav">
-            <span class="side-nav__header">Main Menu</span>
-            <li class="side-nav__item">
-              <span><a href="/home/login/dashboard">Dashboard</a></span>
-            </li>
-            <li class="side-nav__item side-nav__item-active">
-              <span><a href="#">Search Flights</a></span>
-            </li>
-            <li class="side-nav__item">
-              <span><a href="/home/login/mybookings">My Bookings</a></span>
-            </li>
-          </ul>
         </div>
 
         <ul class="side-nav">
           <li class="side-nav__item last-item">
-            <span><a href="/home/login/logout">Log Out</a></span>
+            <span><a href="/home/adminlogin/logout">Log Out</a></span>
           </li>
         </ul>
       </nav>
@@ -62,6 +69,14 @@
                 id="time"
               />
             </div>
+            <div class="search">
+              <input
+                type="number"
+                class="search__input"
+                id="flightnumber"
+                placeholder="Plane Number"
+              />
+            </div>
             <button onclick="search()">Search</button>
           </div>
           <div class="user-nav">
@@ -70,9 +85,9 @@
             </div>
           </div>
         </div>
-        <div class="flights-container" id="flights"></div>
+        <div class="flights-container" id="bookings"></div>
       </main>
     </div>
-    <script src="./scripts/filter.js"></script>
+    <script src="./scripts/bookings.js"></script>
   </body>
 </html>

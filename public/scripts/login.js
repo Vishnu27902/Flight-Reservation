@@ -33,16 +33,19 @@ const login = async () => {
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value
     const inputData = { email: email, password: password }
-    await axios.post("http://localhost:5000/home/login", inputData).then((res) => {
+    await axios.post("http://localhost:5000/home/login", inputData).then(async (res) => {
         const { success } = res.data
         if (success) {
-            axios.get("http://localhost:5000/home/login/dashboard")
+            window.location.href = "/home/login/dashboard"
+            // const res = await axios.get("http://localhost:5000/home/login/dashboard")
+            // console.log(res)
             return
         }
         showStatus()
         resetLogin()
     })
 }
+
 
 const adminLogin = async () => {
     const email = document.getElementById("adminemail").value
@@ -51,8 +54,10 @@ const adminLogin = async () => {
     await axios.post("http://localhost:5000/home/adminlogin", inputData).then((res) => {
         const { success } = res.data
         if (success) {
-            axios.get("http://localhost:5000/home/adminlogin/dashboard")
+            window.location.href = "/home/adminlogin/admindashboard"
             return
+            // axios.get("http://localhost:5000/home/adminlogin/dashboard")
+            // return
         }
         showAdminStatus()
         resetAdminLogin()

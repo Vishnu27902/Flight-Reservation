@@ -1,15 +1,28 @@
 const sessionData = async () => {
-    const res = await axios.get("localhost:5000/home/login/booking")
-    return res.data
+  const data = await axios.get("http://localhost:5000/home/login/session")
+  let res = data.data
+  document.getElementById("user-info").innerHTML = res.firstname
+  return res
+}
+const { firstname, lastname, email, phnumber } = sessionData()
+
+const serverData = async () => {
+  const data = await axios.get("http://localhost:5000/home/login/mybookings/getbookings")
+  const res = data.data
+  if (res.success) {
+    appendBooking(res.bookingData, firstname, lastname, email, phnumber)
+  } else {
+    document.getElementById("bookings").innerHTML = "No Bookings Available"
+  }
 }
 
 const appendBooking = (myBookings) => {
-    if (document.getElementById("bookings").innerHTML == "No Bookings Available") {
-        document.getElementById("bookings").innerHTML = ""
-    }
-    const bookingsDOM = document.getElementById("bookings")
-    for (const i in myBookings) {
-        const template = `<div class="flight-container">
+  if (document.getElementById("bookings").innerHTML == "No Bookings Available") {
+    document.getElementById("bookings").innerHTML = ""
+  }
+  const bookingsDOM = document.getElementById("bookings")
+  for (let i of myBookings) {
+    const template = `<div class="flight-container">
     <div class="flight">
       <h3>Plane No :${i.flightnumber}</h3>
       <div class="points">
@@ -29,14 +42,8 @@ const appendBooking = (myBookings) => {
       </div>
     </div>
   </div>`
-        bookingsDOM.innerHTML += template
-    }
+    bookingsDOM.innerHTML += template
+  }
 }
 
-const res = sessionData()
-document.getElementById("user-info").innerHTML = res.firstname
-if (res.success) {
-    appendBooking(res.bookingData)
-} else {
-    document.getElementById("bookings").innerHTML = "No Bookings Available"
-}
+serverData()

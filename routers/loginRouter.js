@@ -1,5 +1,5 @@
 const express = require("express")
-const {  sessionController, dashboardFileGetter, filterFlightsFileGetter, reservationController, searchFlightsPostController, mybooinkgsFileGetter, mybookingsController, logoutController } = require("../controllers/loginControllers")
+const { sessionController, dashboardFileGetter, filterFlightsFileGetter, reservationController, searchFlightsPostController, mybooinkgsFileGetter, mybookingsController, logoutController } = require("../controllers/loginControllers")
 const Router = express.Router()
 
 Router.route("/dashboard").get(dashboardFileGetter)

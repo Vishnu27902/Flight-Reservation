@@ -13,19 +13,18 @@ const app = express()
 const PORT = process.env.PORT || 5000
 const MONGO_URI = process.env.MONGO_URI
 
-app.use(express.static("./public"))
 connectDB(MONGO_URI)
 
-app.use(cors({origin:true}))
+app.use(cors({ origin: true }))
 app.use(session({
     secret: "sessionsecret",
     resave: true,
     saveUninitialized: false
 }))
 app.use(bodyParser.urlencoded({ extended: false }), bodyParser.json())
-app.use("/home", homeRouter)
-app.use("/home/adminlogin", adminRouter)
-app.use("/home/login", loginRouter)
+app.use("/home",express.static("./public"), homeRouter)
+app.use("/home/adminlogin",express.static("./public"), adminRouter)
+app.use("/home/login",express.static("./public"), loginRouter)
 
 const errFunction = (req, res) => {
     res.status(404).sendFile(path.resolve(__dirname, "public", "error.html"))

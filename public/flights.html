@@ -10,7 +10,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <title>Flight Search</title>
+    <title>Flights</title>
     <head>
       <link rel="stylesheet" href="./css/dashboard.css" />
     </head>
@@ -25,17 +25,21 @@
           <ul class="side-nav">
             <span class="side-nav__header">Main Menu</span>
             <li class="side-nav__item">
-              <span><a href="/home/login/dashboard">Dashboard</a></span>
+              <span
+                ><a href="/home/adminlogin/admindashboard">Dashboard</a></span
+              >
             </li>
             <li class="side-nav__item side-nav__item-active">
-              <span><a href="#">Search Flights</a></span>
+              <span><a href="#">Flights</a></span>
             </li>
             <li class="side-nav__item">
-              <span><a href="/home/login/mybookings">My Bookings</a></span>
+              <span><a href="/home/adminlogin/addflight">Add Flight</a></span>
+            </li>
+            <li class="side-nav__item">
+              <span><a href="/home/adminlogin/bookings">Bookings</a></span>
             </li>
           </ul>
         </div>
-
         <ul class="side-nav">
           <li class="side-nav__item last-item">
             <span><a href="/home/login/logout">Log Out</a></span>
@@ -45,25 +49,7 @@
 
       <main class="main-content">
         <div class="top-container">
-          <div class="inputdetails">
-            <div class="search">
-              <input
-                type="text"
-                class="search__input"
-                id="date"
-                placeholder="yyyy:mm:dd"
-              />
-            </div>
-            <div class="search">
-              <input
-                type="text"
-                class="search__input"
-                placeholder="HH:MM:SS"
-                id="time"
-              />
-            </div>
-            <button onclick="search()">Search</button>
-          </div>
+          <div><h1>Welcome UserName</h1></div>
           <div class="user-nav">
             <div class="user-info">
               <span class="user-name" id="user-info">Unknown</span>
@@ -73,6 +59,6 @@
         <div class="flights-container" id="flights"></div>
       </main>
     </div>
-    <script src="./scripts/filter.js"></script>
+    <script src="./scripts/flights.js"></script>
   </body>
 </html>

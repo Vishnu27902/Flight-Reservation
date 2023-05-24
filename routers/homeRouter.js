@@ -4,7 +4,7 @@ const Router = express.Router()
 
 Router.route("/").get(homeController)
 
-Router.route("/login",).get(loginGetController).post(loginPostController)
+Router.route("/login").get(loginGetController).post(loginPostController)
 
 Router.route("/registration").get(registrationGetController).post(registrationPostController)
 

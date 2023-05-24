@@ -1,7 +1,7 @@
 const flightModel = require("../models/flightModel")
 const bookingModel = require("../models/bookingModel")
 const path = require("path")
-const publicPath = path.join(__dirname + ".." + "public")
+const publicPath = path.join(__dirname, "..", "public")
 
 const dashboardFileGetter = (req, res) => {
     res.status(200).sendFile(path.join(publicPath, "dashboard.html"))
@@ -16,8 +16,8 @@ const mybooinkgsFileGetter = (req, res) => {
 }
 
 const sessionController = async (req, res) => {
-    const { firstname } = req.session.firstname
-    res.status(200).json({ success: true, firstname: firstname })
+    const { firstname, lastname, phnumber, email } = req.session.userData
+    res.status(200).json({ success: true, firstname: firstname, lastname: lastname, phnumber: phnumber, email: email })
 }
 
 const searchFlightsPostController = async (req, res) => {
@@ -45,7 +45,7 @@ const mybookingsController = async (req, res) => {
 }
 
 const reservationController = async (req, res) => {
-    const id = req.params.ids
+    const id = req.params.id
     const flightData = await flightModel.findOne({ _id: id }).exec()
     const { firstname, lastname, phnumber, email } = req.session.userData
     console.log(req.session.userData)
@@ -68,7 +68,7 @@ const reservationController = async (req, res) => {
 
 const logoutController = (req, res) => {
     req.session.destroy()
-    res.status(301).redirect("/home/login")
+    res.status(301).redirect("/home")
 }
 
 module.exports = { logoutController, sessionController, dashboardFileGetter, filterFlightsFileGetter, mybooinkgsFileGetter, searchFlightsPostController, mybookingsController, reservationController }

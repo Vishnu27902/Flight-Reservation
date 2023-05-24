@@ -10,7 +10,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <title>Flight Search</title>
+    <title>Dashboard</title>
     <head>
       <link rel="stylesheet" href="./css/dashboard.css" />
     </head>
@@ -24,11 +24,13 @@
           </div>
           <ul class="side-nav">
             <span class="side-nav__header">Main Menu</span>
-            <li class="side-nav__item">
-              <span><a href="/home/login/dashboard">Dashboard</a></span>
-            </li>
             <li class="side-nav__item side-nav__item-active">
-              <span><a href="#">Search Flights</a></span>
+              <span><a href="#">Dashboard</a></span>
+            </li>
+            <li class="side-nav__item">
+              <span
+                ><a href="/home/login/searchflights">Search Flights</a></span
+              >
             </li>
             <li class="side-nav__item">
               <span><a href="/home/login/mybookings">My Bookings</a></span>
@@ -45,34 +47,34 @@
 
       <main class="main-content">
         <div class="top-container">
-          <div class="inputdetails">
-            <div class="search">
-              <input
-                type="text"
-                class="search__input"
-                id="date"
-                placeholder="yyyy:mm:dd"
-              />
-            </div>
-            <div class="search">
-              <input
-                type="text"
-                class="search__input"
-                placeholder="HH:MM:SS"
-                id="time"
-              />
-            </div>
-            <button onclick="search()">Search</button>
-          </div>
+          <div><h1>User Dashboard</h1></div>
           <div class="user-nav">
             <div class="user-info">
               <span class="user-name" id="user-info">Unknown</span>
             </div>
           </div>
         </div>
-        <div class="flights-container" id="flights"></div>
+        <div class="flights-container" id="profile">
+          <div class="flight-container">
+            <div class="flight">
+              <h3>Profile</h3>
+              <div class="points">
+                <h5 id="firstname">First Name:</h5>
+              </div>
+              <div class="points">
+                <h5 id="lastname">Last Name:</h5>
+              </div>
+              <div class="points">
+                <h5 id="email">Email:</h5>
+              </div>
+              <div class="points">
+                <h5 id="phnumber">Phone Number :</h5>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
-    <script src="./scripts/filter.js"></script>
+    <script src="./scripts/dashboard.js"></script>
   </body>
 </html>

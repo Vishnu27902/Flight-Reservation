@@ -6,7 +6,6 @@ function togglePasswordVisibility() {
     confirmPassword.type = showPasswordCheckbox.checked ? "text" : "password";
 }
 
-
 const validationError = () => {
     document.getElementById("status").innerHTML = "Enter Validate Data"
     document.getElementById("status").classList.add("invalide")
@@ -150,10 +149,11 @@ const register = async () => {
         const password = document.getElementById("password").value
         const inputData = { firstname: firstname, lastname: lastname, phnumber: phnumber, email: email, password: password }
         await axios.post("http://localhost:5000/home/registration", inputData).then((data) => {
-            const { success } = data
+            const { success } = data.data
             if (success) {
                 showStatus(success)
                 reset()
+                return
             }
             showStatus(success)
         })

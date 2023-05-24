@@ -1,6 +1,6 @@
 function login() {
-    window.location.href = "../login.html"
+    window.location.href = "http://localhost:5000/home/login"
 }
 function register() {
-    window.location.href = "../registration.html"
+    window.location.href = "http://localhost:5000/home/registration"
 }

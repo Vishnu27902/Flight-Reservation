@@ -16,7 +16,7 @@ const flightsFileGetter = (req, res) => {
 }
 
 const bookingsFileGetter = (req, res) => {
-    res.status(200).sendFile(path.join(publicPath, "bookings,html"))
+    res.status(200).sendFile(path.join(publicPath, "bookings.html"))
 }
 
 const bookingsGetController = async (req, res) => {
@@ -59,10 +59,12 @@ const deleteflightController = async (req, res) => {
     const id = req.params.id
     await flightModel.deleteOne({ _id: id }).then(() => {
         console.log("Flight Deleted Successfully")
-        res.status(200).json({ success: true, message: "Flight Deleted Successfully" })
+        res.end()
+        // res.status(200).json({ success: true, message: "Flight Deleted Successfully" })
     }).catch((err) => {
         console.log("Error Occured")
-        res.status(200).json({ success: false, message: `Error occured : ${err.message}` })
+        res.end()
+        // res.status(200).json({ success: false, message: `Error occured : ${err.message}` })
     })
 }
 
@@ -79,9 +81,14 @@ const addFlightPostController = async (req, res) => {
     })
 }
 
-const logoutController = (req, res) => {
-    req.session.destroy()
-    res.status(302).redirect("/home")
+const sessionController = async (req, res) => {
+    const { firstname, lastname, phnumber, email } = req.session.userData
+    res.status(200).json({ success: true, firstname: firstname, lastname: lastname, phnumber: phnumber, email: email })
 }
 
-module.exports = { addFlightPostController, adminDashboardFileGetter, flightsFileGetter, bookingsFileGetter, deleteflightController, bookingsPostContoller, bookingsGetController, getFlightsController, logoutController, addFlightFileGetter, addFlightPostController }
+const logoutController = (req, res) => {
+    req.session.destroy()
+    res.status(301).redirect("/home")
+}
+
+module.exports = { addFlightPostController, adminDashboardFileGetter, flightsFileGetter, bookingsFileGetter, deleteflightController, bookingsPostContoller, sessionController, bookingsGetController, getFlightsController, logoutController, addFlightFileGetter, addFlightPostController }
