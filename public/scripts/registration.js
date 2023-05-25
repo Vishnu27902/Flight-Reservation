@@ -32,11 +32,17 @@ const showStatus = (status) => {
 
 const reset = () => {
     document.getElementById("firstname").value = ""
+    document.getElementById("firstnameStatus").innerHTML = ""
     document.getElementById("lastname").value = ""
+    document.getElementById("lastnameStatus").innerHTML = ""
     document.getElementById("phnumber").value = ""
+    document.getElementById("phnumberStatus").innerHTML = ""
     document.getElementById("email").value = ""
+    document.getElementById("emailStatus").innerHTML = ""
     document.getElementById("password").value = ""
+    document.getElementById("passwordStatus").innerHTML = ""
     document.getElementById("confirmpassword").value = ""
+    document.getElementById("confirmpasswordStatus").innerHTML = ""
 }
 
 const firstnameDOM = document.getElementById("firstname")
