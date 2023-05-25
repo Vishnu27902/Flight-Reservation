@@ -37,6 +37,11 @@ const reset = () => {
     document.getElementById("from").value = ""
     document.getElementById("date").value = ""
     document.getElementById("time").value = ""
+            document.getElementById("flightnumberstatus").innerHTML = ""
+        document.getElementById("fromstatus").innerHTML = ""
+        document.getElementById("tostatus").innerHTML = ""
+        document.getElementById("timestatus").innerHTML = ""
+        document.getElementById("datestatus").innerHTML = ""
 }
 
 const from = document.getElementById("from")
