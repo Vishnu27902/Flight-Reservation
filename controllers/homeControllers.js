@@ -68,7 +68,7 @@ const adminLoginController = async (req, res) => {
     const passwordCheck = await bcrypt.compare(password, userData.password)
     if (passwordCheck) {
         const session = req.session
-        const { firstname, lastname, phnumber, email } = userData
+        const { firstname, lastname, phnumber, _id:email } = userData
         session.userData = { firstname, lastname, phnumber, email }
         console.log(`User ${firstname} Logged in`)
         res.status(200).json({ success: true, message: `${userData.firstname} logged in...` })
