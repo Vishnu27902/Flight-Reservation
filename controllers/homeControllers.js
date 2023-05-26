@@ -74,7 +74,7 @@ const adminLoginController = async (req, res) => {
         res.status(200).json({ success: true, message: `${userData.firstname} logged in...` })
     } else {
         console.log("Error Occured")
-        res.status(200).json({ success: true, message: "User Not Found" })
+        res.status(200).json({ success: false, message: "User Not Found" })
     }
 }
 
