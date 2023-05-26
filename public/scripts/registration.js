@@ -21,7 +21,7 @@ const showStatus = (status) => {
             document.getElementById("status").innerHTML = ""
         }, 3000)
     } else {
-        document.getElementById("status").innerHTML = "Error Occured"
+        document.getElementById("status").innerHTML = "Ph Number or gmail already exists"
         document.getElementById("status").classList.add("invalide")
         document.getElementById("status").classList.remove("valide")
         setTimeout(() => {
