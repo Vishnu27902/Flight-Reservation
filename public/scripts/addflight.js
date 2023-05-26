@@ -22,7 +22,7 @@ const showStatus = (status) => {
             document.getElementById("status").innerHTML = ""
         }, 3000)
     } else {
-        document.getElementById("status").innerHTML = "Error Occured"
+        document.getElementById("status").innerHTML = "Flight Number Already Exists"
         document.getElementById("status").classList.add("invalide")
         document.getElementById("status").classList.remove("valide")
         setTimeout(() => {
