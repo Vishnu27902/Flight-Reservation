@@ -21,7 +21,7 @@ const showStatus = (status) => {
             document.getElementById("status").innerHTML = ""
         }, 3000)
     } else {
-        document.getElementById("status").innerHTML = "Email ID already exists"
+        document.getElementById("status").innerHTML = "Email ID or Phone Number already exists"
         document.getElementById("status").classList.add("invalide")
         document.getElementById("status").classList.remove("valide")
         setTimeout(() => {
